@@ -1,4 +1,4 @@
-import { RegisterData, RegisterFormProps, SessionData } from "@/auth/types";
+import { RegisterData, RegisterFormProps } from "@/auth/types";
 import { Box, Button } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-mui";
