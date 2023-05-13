@@ -21,18 +21,22 @@ function AuthForm(props: AuthFormProps) {
             >
                 {({ submitForm, isSubmitting }) => (
                     <Form>
-                        <Field
-                            component={TextField}
-                            name="login"
-                            label="Login"
-                        />
+                        <Box>
+                            <Field
+                                component={TextField}
+                                name="login"
+                                label="Login"
+                            />
+                        </Box>
 
-                        <Field
-                            component={TextField}
-                            name="password"
-                            label="Password"
-                            type="password"
-                        />
+                        <Box>
+                            <Field
+                                component={TextField}
+                                name="password"
+                                label="Password"
+                                type="password"
+                            />
+                        </Box>
 
                         <Button
                             variant="contained"
