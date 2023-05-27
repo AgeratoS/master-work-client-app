@@ -10,10 +10,12 @@ export type RegisterData = SessionData & {
 export type AuthFormProps = {
     data?: SessionData;
     onSubmit: (data: SessionData) => void;
+    onChangeToRegister?: VoidFunction;
 }
 
 export type RegisterFormProps = {
     onSubmit: (data: SessionData) => void;
+    onChangeToAuth?: VoidFunction;
 }
 
 export enum FormMode {

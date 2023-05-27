@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
-import AuthForm from "../AuthForm";
-import RegisterForm from "../RegisterForm";
+import { Button, Stack, Typography } from "@mui/material";
+import AuthForm from "@/auth/components/AuthForm";
+import RegisterForm from "@/auth/components/RegisterForm";
 import { FormMode, SessionFormProps } from "@/auth/types";
 import { isAuthMode, isRegisterMode } from "@/auth/utils";
 
@@ -20,19 +20,19 @@ function SessionForm(props: SessionFormProps) {
 
     if (isAuthMode(formMode)) {
         return (
-            <>
-                <AuthForm {...props} />
-                <Button data-testid="ChangeFormLink" onClick={toggleMode}>Sign in</Button>
-            </>
+            <Stack spacing={8}>
+                <Typography variant="h4">Log in to system</Typography>
+                <AuthForm {...props} onChangeToRegister={toggleMode} />
+            </Stack>
         )
     }
 
     else if (isRegisterMode(formMode)) {
         return (
-            <>
-                <RegisterForm {...props} />
-                <Button data-testid="ChangeFormLink" onClick={toggleMode}>Auth</Button>
-            </>
+            <Stack spacing={8}>
+                <Typography variant="h4">Register to system</Typography>
+                <RegisterForm {...props} onChangeToAuth={toggleMode} />
+            </Stack>
         )
     }
 
