@@ -4,6 +4,11 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-mui";
 import PasswordField from "@/common/components/PasswordField";
 
+/**
+ * Форма регистрации: показывается, если пользователь не имеет доступа к системе
+ * @param props Параметры для передачи компоненту, см. описание типа
+ * @returns Компонент
+ */
 function RegisterForm(props: RegisterFormProps) {
 
     const { onSubmit } = props;

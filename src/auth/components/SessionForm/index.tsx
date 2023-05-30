@@ -5,6 +5,11 @@ import RegisterForm from "@/auth/components/RegisterForm";
 import { FormMode, SessionFormProps } from "@/auth/types";
 import { isAuthMode, isRegisterMode } from "@/auth/utils";
 
+/**
+ * Компонент, сочетающий в себе переключение между формой регистрации и аутентификации
+ * @param props Параметры для передачи компоненту, см. описание типа
+ * @returns Компонент
+ */
 function SessionForm(props: SessionFormProps) {
 
     const [formMode, setFormMode] = useState<FormMode>(FormMode.AUTH);
@@ -22,7 +27,7 @@ function SessionForm(props: SessionFormProps) {
         return (
             <Stack spacing={8}>
                 <Typography variant="h4">Log in to system</Typography>
-                <AuthForm {...props} onChangeToRegister={toggleMode} />
+                <AuthForm {...props} onChangeToRegister={toggleMode} onSubmit={(data) => props.onSubmit(data, formMode)} />
             </Stack>
         )
     }
@@ -31,7 +36,7 @@ function SessionForm(props: SessionFormProps) {
         return (
             <Stack spacing={8}>
                 <Typography variant="h4">Register to system</Typography>
-                <RegisterForm {...props} onChangeToAuth={toggleMode} />
+                <RegisterForm {...props} onChangeToAuth={toggleMode} onSubmit={(data) => props.onSubmit(data, formMode)} />
             </Stack>
         )
     }

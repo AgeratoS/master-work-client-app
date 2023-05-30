@@ -22,4 +22,9 @@ export enum FormMode {
     AUTH, REGISTER
 }
 
-export type SessionFormProps = AuthFormProps | RegisterFormProps;
+export type SessionFormProps = {
+    data?: SessionData;
+    onSubmit: (data: SessionData, formMode: FormMode) => void;
+    onChangeToRegister?: VoidFunction;
+    onChangeToAuth?: VoidFunction;
+}

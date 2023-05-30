@@ -1,13 +1,13 @@
 import type { AuthFormProps, SessionData } from "@/auth/types";
-import { Box, Button, Grid, IconButton, InputAdornment } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-mui";
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useState } from "react";
-import { useToggle } from "@/common/hooks";
 import PasswordField from "@/common/components/PasswordField";
-
+/**
+ * Компонент формы, отвечающий за аутентификацию разработчика в системе
+ * @param props Параметры для компонента, см. описание типа
+ * @returns Компонент
+ */
 function AuthForm(props: AuthFormProps) {
 
     const { data, onSubmit } = props;
