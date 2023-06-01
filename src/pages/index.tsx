@@ -1,5 +1,6 @@
 import SessionFormContainer from '@/auth/containers/SessionFormContainer'
-import { Container, Paper } from '@mui/material'
+import CustomPaper from '@/common/components/CustomPaper'
+import { Container } from '@mui/material'
 import Head from 'next/head'
 
 export default function Home() {
@@ -21,11 +22,9 @@ export default function Home() {
           minHeight: '100vh',
         }}
       >
-        <Paper elevation={8} sx={{
-          padding: 4
-        }}>
+        <CustomPaper>
           <SessionFormContainer />
-        </Paper>
+        </CustomPaper>
       </Container>
     </>
   )
