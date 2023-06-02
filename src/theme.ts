@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import type { } from '@mui/x-data-grid/themeAugmentation';
 import { red } from "@mui/material/colors";
 
 const theme = createTheme({
@@ -66,6 +67,16 @@ const theme = createTheme({
             styleOverrides: {
                 colorPrimary: {
                     backgroundColor: 'transparent'
+                }
+            }
+        },
+        MuiDataGrid: {
+            styleOverrides: {
+                root: {
+                    border: 'none',
+                    "& .MuiDataGrid-footerContainer": {
+                        borderTop: 'none'
+                    }
                 }
             }
         }
