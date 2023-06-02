@@ -58,6 +58,16 @@ const theme = createTheme({
             defaultProps: {
                 variant: 'contained'
             }
+        },
+        MuiAppBar: {
+            defaultProps: {
+                elevation: 0,
+            },
+            styleOverrides: {
+                colorPrimary: {
+                    backgroundColor: 'transparent'
+                }
+            }
         }
     },
 });
