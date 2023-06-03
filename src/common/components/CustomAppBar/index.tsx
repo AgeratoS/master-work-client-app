@@ -1,11 +1,11 @@
-import { AppBarProps } from "@/common/types";
+import { CustomAppBarProps } from "@/common/types";
 import { Notifications } from "@mui/icons-material";
 import { AppBar, Avatar, Box, IconButton, Stack, Toolbar, Typography } from "@mui/material";
 
-function CustomAppBar(props: AppBarProps) {
+function CustomAppBar(props: CustomAppBarProps) {
 
     return (
-        <AppBar>
+        <AppBar {...props}>
             <Toolbar>
                 {props.leftRender && <Box sx={{ flexGrow: 1 }}>
                     {props.leftRender!()}
