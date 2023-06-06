@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AuthProcess />
+      {/* <AuthProcess /> */}
       {getLayout(<Component {...pageProps} />)}
     </ThemeProvider>
   </ApolloProvider>

@@ -15,6 +15,8 @@ export type AppPropsWithLayout = AppProps & {
 
 export type Token = string;
 
+export type UseDialogReturnType = [boolean, [VoidFunction, VoidFunction]];
+
 // Component props types
 
 export type CustomAppBarProps = AppBarProps & {

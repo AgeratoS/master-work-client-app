@@ -1,6 +1,7 @@
+import { useDialog } from "@/common/hooks";
 import { ServicesProps } from "@/services/types";
 import { Add, Delete } from "@mui/icons-material";
-import { Button, Stack } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 /**
@@ -9,10 +10,17 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
  */
 function Services(props: ServicesProps) {
 
+    const [removeDialog, [openRemoveDialog, closeRemoveDialog]] = useDialog(false);
+
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'API Name', width: 200 },
         { field: 'url', headerName: 'External URL', flex: 1 }
     ]
+
+    const onRemove = () => {
+        closeRemoveDialog();
+        props.onRemove?.();
+    }
 
     return (
         <>
@@ -37,6 +45,8 @@ function Services(props: ServicesProps) {
 
                     <Button
                         variant="text"
+                        onClick={openRemoveDialog}
+                        disabled={props.removeDisabled}
                         startIcon={
                             <Delete
                                 color='primary'
@@ -50,9 +60,31 @@ function Services(props: ServicesProps) {
             <DataGrid
                 columns={columns}
                 checkboxSelection
+                onRowSelectionModelChange={props.onChangeSelect}
                 disableRowSelectionOnClick
                 rows={props.services}
             />
+
+            {/* Dialog for removing */}
+            <Dialog
+                open={removeDialog}
+                onClose={closeRemoveDialog}
+            >
+                <DialogTitle>
+                    Are you sure to remove these services?
+                </DialogTitle>
+
+                <DialogContent>
+                    <DialogContentText>
+                        This action can't be undone
+                    </DialogContentText>
+                </DialogContent>
+
+                <DialogActions>
+                    <Button onClick={onRemove}>OK</Button>
+                    <Button onClick={closeRemoveDialog} variant="text">Cancel</Button>
+                </DialogActions>
+            </Dialog>
         </>
     );
 }

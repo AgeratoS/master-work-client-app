@@ -1,5 +1,7 @@
 // Domain types
 
+import { GridRowSelectionModel } from "@mui/x-data-grid";
+
 export type ServiceLog = {
     id: number;
     serviceId: number;
@@ -27,8 +29,10 @@ export type Service = {
 export type ServicesProps = {
     services: Service[];
     onAdd?: VoidFunction;
-    onRemove?: (servicesId: number[]) => void;
+    onRemove?: VoidFunction;
+    removeDisabled?: boolean;
     onClickService?: (serviceId: number) => void;
+    onChangeSelect?: (rowSelectionModel: GridRowSelectionModel) => void;
 }
 
 export type CreateServiceDto = Pick<Service, 'name' | 'url'>;
