@@ -40,3 +40,6 @@ export type ServiceFormBaseProps<T> = {
     onSubmit: (data: T) => void;
     initialData: T;
 }
+
+export type CreateServiceProps = ServiceFormBaseProps<CreateServiceDto>;
+export type UpdateServiceProps = ServiceFormBaseProps<UpdateServiceDto>;
