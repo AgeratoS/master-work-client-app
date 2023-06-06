@@ -4,6 +4,7 @@ import AuthFormComponent from ".";
 const meta: Meta<typeof AuthFormComponent> = {
     title: 'AuthForm',
     component: AuthFormComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

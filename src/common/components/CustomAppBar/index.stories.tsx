@@ -4,7 +4,8 @@ import { Typography } from "@mui/material";
 
 const meta: Meta<typeof AppBarComponent> = {
     title: 'CustomAppBar',
-    component: AppBarComponent
+    component: AppBarComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

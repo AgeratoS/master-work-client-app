@@ -47,3 +47,9 @@ export type ServiceFormBaseProps<T> = {
 
 export type CreateServiceProps = ServiceFormBaseProps<CreateServiceDto>;
 export type UpdateServiceProps = ServiceFormBaseProps<UpdateServiceDto>;
+
+export type ServicePageProps = {
+    service: Service;
+    onEdit?: (service: UpdateServiceDto) => void;
+    onCheckLog?: VoidFunction;
+}

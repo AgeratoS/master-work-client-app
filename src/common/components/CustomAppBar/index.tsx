@@ -1,7 +1,11 @@
 import { CustomAppBarProps } from "@/common/types";
 import { Notifications } from "@mui/icons-material";
 import { AppBar, Avatar, Box, IconButton, Stack, Toolbar, Typography } from "@mui/material";
-
+/**
+ * Представляет шапку всего приложения
+ * @param props Properties
+ * @returns Component
+ */
 function CustomAppBar(props: CustomAppBarProps) {
 
     return (

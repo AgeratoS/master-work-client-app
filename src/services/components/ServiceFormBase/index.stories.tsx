@@ -3,7 +3,8 @@ import ServiceFormBaseComponent from ".";
 
 const meta: Meta<typeof ServiceFormBaseComponent> = {
     title: 'ServiceFormBase',
-    component: ServiceFormBaseComponent
+    component: ServiceFormBaseComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

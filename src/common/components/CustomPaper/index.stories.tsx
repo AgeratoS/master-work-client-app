@@ -5,7 +5,8 @@ import { SessionData, FormMode } from "@/auth/types";
 
 const meta: Meta<typeof CustomPaperComponent> = {
     title: 'CustomPaper',
-    component: CustomPaperComponent
+    component: CustomPaperComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

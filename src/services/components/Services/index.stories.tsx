@@ -4,7 +4,8 @@ import { fakeServices } from "@/services/mocks";
 
 const meta: Meta<typeof ServicesComponent> = {
     title: 'Services',
-    component: ServicesComponent
+    component: ServicesComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

@@ -4,6 +4,7 @@ import AppMenuComponent from ".";
 const meta: Meta<typeof AppMenuComponent> = {
     title: 'AppMenu',
     component: AppMenuComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

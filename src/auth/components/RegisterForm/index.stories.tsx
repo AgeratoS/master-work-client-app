@@ -3,7 +3,8 @@ import RegisterFormComponent from ".";
 
 const meta: Meta<typeof RegisterFormComponent> = {
     title: 'RegisterForm',
-    component: RegisterFormComponent
+    component: RegisterFormComponent,
+    tags: ['autodocs']
 }
 
 export default meta;

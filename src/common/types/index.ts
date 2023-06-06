@@ -27,3 +27,19 @@ export type CustomAppBarProps = AppBarProps & {
 export type CustomHeadProps = {
     title?: string;
 }
+
+export type ConditionalProps = {
+    data: boolean;
+    onTrue: () => ReactElement;
+    onFalse?: () => ReactElement;
+}
+
+export type EntityDataItemProps = {
+    label: string;
+    content: string | ReactElement;
+    span?: number;
+}
+
+export type EntityDataProps = {
+    data: EntityDataItemProps[];
+}

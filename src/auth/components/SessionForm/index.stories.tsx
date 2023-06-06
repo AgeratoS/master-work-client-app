@@ -3,7 +3,8 @@ import SessionFormComponent from ".";
 
 const meta: Meta<typeof SessionFormComponent> = {
     title: 'SessionForm',
-    component: SessionFormComponent
+    component: SessionFormComponent,
+    tags: ['autodocs']
 }
 
 export default meta;
