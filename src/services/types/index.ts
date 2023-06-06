@@ -30,3 +30,13 @@ export type ServicesProps = {
     onRemove?: (servicesId: number[]) => void;
     onClickService?: (serviceId: number) => void;
 }
+
+export type CreateServiceDto = Pick<Service, 'name' | 'url'>;
+export type UpdateServiceDto = Pick<Service, 'id' | 'name' | 'url'>;
+
+export type ServiceDto = CreateServiceDto | UpdateServiceDto;
+
+export type ServiceFormBaseProps<T> = {
+    onSubmit: (data: T) => void;
+    initialData: T;
+}

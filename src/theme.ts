@@ -38,7 +38,7 @@ const theme = createTheme({
         MuiSvgIcon: {
             defaultProps: {
                 htmlColor: '#F5F5F5',
-            }
+            },
         },
         MuiTextField: {
             defaultProps: {
@@ -58,7 +58,7 @@ const theme = createTheme({
         MuiButton: {
             defaultProps: {
                 variant: 'contained'
-            }
+            },
         },
         MuiAppBar: {
             defaultProps: {

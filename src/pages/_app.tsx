@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'
 import { CssBaseline } from '@mui/material'
 import { AppPropsWithLayout } from '@/common/types'
+import AuthProcess from '@/common/containers/AuthProcess'
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <AuthProcess />
       {getLayout(<Component {...pageProps} />)}
     </ThemeProvider>
   </ApolloProvider>

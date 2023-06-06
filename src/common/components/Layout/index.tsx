@@ -32,7 +32,7 @@ function Layout({ children }: { children: ReactElement }) {
                     <AppMenu />
                 </Drawer>
             </Box>
-            <Box>
+            <Box sx={{ flex: 1, maxWidth: `calc(100% - ${DRAWER_WIDTH}px)`, paddingLeft: 2, paddingRight: 2, }}>
                 <Box component="main">
                     <Toolbar />
                     {children}
