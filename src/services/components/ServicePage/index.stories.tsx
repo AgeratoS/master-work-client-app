@@ -10,5 +10,11 @@ const meta: Meta<typeof ServicePageComponent> = {
 export default meta;
 
 export const ServicePage: StoryObj<typeof ServicePageComponent> = {
-    args: {}
+    args: {
+        service: {
+            id: 1,
+            name: "Service 1",
+            url: "http://localhost:5123/1"
+        }
+    }
 }

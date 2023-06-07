@@ -1,6 +1,8 @@
 // Domain types
 
 import { GridRowSelectionModel } from "@mui/x-data-grid";
+import { CurveType } from "recharts/types/shape/Curve";
+import { DataKey } from "recharts/types/util/types";
 
 export type ServiceLog = {
     id: number;
@@ -24,6 +26,11 @@ export type Service = {
     logs?: ServiceLog[]
 }
 
+export type CreateServiceDto = Pick<Service, 'name' | 'url'>;
+export type UpdateServiceDto = Pick<Service, 'id' | 'name' | 'url'>;
+
+export type ServiceDto = CreateServiceDto | UpdateServiceDto;
+
 
 // Component types
 export type ServicesProps = {
@@ -34,11 +41,6 @@ export type ServicesProps = {
     onClickService?: (serviceId: number) => void;
     onChangeSelect?: (rowSelectionModel: GridRowSelectionModel) => void;
 }
-
-export type CreateServiceDto = Pick<Service, 'name' | 'url'>;
-export type UpdateServiceDto = Pick<Service, 'id' | 'name' | 'url'>;
-
-export type ServiceDto = CreateServiceDto | UpdateServiceDto;
 
 export type ServiceFormBaseProps<T> = {
     onSubmit: (data: T) => void;
@@ -52,4 +54,18 @@ export type ServicePageProps = {
     service: Service;
     onEdit?: (service: UpdateServiceDto) => void;
     onCheckLog?: VoidFunction;
+}
+
+export type ServiceStatLineProp<T> = {
+    name: string;
+    type: CurveType;
+    dataKey: DataKey<T>;
+    stroke?: string;
+}
+
+export type ServiceStatProps<T> = {
+    name: string;
+    data: T[];
+    xAxisKey: DataKey<T>;
+    lines: ServiceStatLineProp<T>[];
 }

@@ -16,20 +16,17 @@ function ServicePage(props: ServicePageProps) {
 
     const onEdit = () => {
         closeEditModal();
-        props.onEdit?.(undefined);
+        // props.onEdit?.(undefined);
     }
 
     return (
-        <Box>
-            <Box>
-                <Stack direction="row" spacing={2.25}>
+        <Stack spacing={11}>
+            <Stack spacing={6}>
+                <Stack direction="row" spacing={2.25} alignItems='center'>
                     <Typography variant="h4">Common settings</Typography>
                     <Button variant="text" onClick={openEditModal}>Edit</Button>
                 </Stack>
-            </Box>
 
-            <Box>
-                <Typography variant="h4">Stats</Typography>
                 <EntityData
                     data={[
                         {
@@ -50,6 +47,10 @@ function ServicePage(props: ServicePageProps) {
                         }
                     ]}
                 />
+            </Stack>
+
+            <Box>
+                <Typography variant="h4">Stats</Typography>
             </Box>
 
             {/* Edit service dialog */}
@@ -70,7 +71,7 @@ function ServicePage(props: ServicePageProps) {
                     <Button onClick={closeEditModal} variant="text">Cancel</Button>
                 </DialogActions>
             </Dialog>
-        </Box>
+        </Stack>
     );
 }
 
