@@ -1,7 +1,9 @@
 import EntityData from "@/common/components/EntityData";
 import { useDialog } from "@/common/hooks";
-import { ServicePageProps } from "@/services/types";
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
+import { RequestsCountStat, RequestsPerHourStat, ServicePageProps } from "@/services/types";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Stack, Typography } from "@mui/material";
+import ServiceStat from "../ServiceStat";
+import Conditional from "@/common/components/Conditional";
 
 /**
  * Представляет компонент-страницу для вывода конкретного сервиса
@@ -50,7 +52,59 @@ function ServicePage(props: ServicePageProps) {
             </Stack>
 
             <Box>
-                <Typography variant="h4">Stats</Typography>
+                <Typography variant="h4" mb={4}>Stats</Typography>
+                <Grid container spacing={3}>
+                    <Conditional
+                        data={props.statistics?.requestsCount !== undefined}
+                        onTrue={() => (
+                            <Grid item xs={12} md={6}>
+                                <ServiceStat<RequestsCountStat> data={props.statistics!.requestsCount!} xAxisKey={'time'} name="Requests count" lines={[
+                                    {
+                                        name: 'Requests',
+                                        type: 'linear',
+                                        dataKey: 'requests'
+                                    }
+                                ]} />
+                            </Grid>
+                        )}
+                        onFalse={() => (
+                            <Grid item xs={12} md={6}>
+                                <ServiceStat<RequestsCountStat> data={[]} xAxisKey={'time'} name="Requests count" lines={[
+                                    {
+                                        name: 'Requests',
+                                        type: 'linear',
+                                        dataKey: 'requests'
+                                    }
+                                ]} />
+                            </Grid>
+                        )}
+                    />
+                    <Conditional
+                        data={props.statistics?.requestsPerHour !== undefined}
+                        onTrue={() => (
+                            <Grid item xs={12} md={6}>
+                                <ServiceStat<RequestsPerHourStat> data={props.statistics!.requestsPerHour!} xAxisKey={'time'} name="Requests per hour" lines={[
+                                    {
+                                        name: 'Requests per hour',
+                                        type: 'linear',
+                                        dataKey: 'requests'
+                                    }
+                                ]} />
+                            </Grid>
+                        )}
+                        onFalse={() => (
+                            <Grid item xs={12} md={6}>
+                                <ServiceStat<RequestsPerHourStat> data={[]} xAxisKey={'time'} name="Requests per hour" lines={[
+                                    {
+                                        name: 'Requests per hour',
+                                        type: 'linear',
+                                        dataKey: 'requests'
+                                    }
+                                ]} />
+                            </Grid>
+                        )}
+                    />
+                </Grid>
             </Box>
 
             {/* Edit service dialog */}

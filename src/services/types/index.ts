@@ -31,6 +31,16 @@ export type UpdateServiceDto = Pick<Service, 'id' | 'name' | 'url'>;
 
 export type ServiceDto = CreateServiceDto | UpdateServiceDto;
 
+export type RequestsCountStat = {
+    time: string;
+    requests: number;
+}
+
+export type RequestsPerHourStat = {
+    time: string;
+    requests: number;
+}
+
 
 // Component types
 export type ServicesProps = {
@@ -54,6 +64,10 @@ export type ServicePageProps = {
     service: Service;
     onEdit?: (service: UpdateServiceDto) => void;
     onCheckLog?: VoidFunction;
+    statistics?: {
+        requestsCount?: RequestsCountStat[];
+        requestsPerHour?: RequestsPerHourStat[];
+    }
 }
 
 export type ServiceStatLineProp<T> = {
