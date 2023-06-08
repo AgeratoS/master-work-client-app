@@ -1,7 +1,7 @@
 import { AppBarProps } from "@mui/material";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
-import { ReactElement, ReactNode } from "react"
+import { PropsWithChildren, ReactElement, ReactNode } from "react"
 
 // Utility types
 
@@ -43,3 +43,11 @@ export type EntityDataItemProps = {
 export type EntityDataProps = {
     data: EntityDataItemProps[];
 }
+
+export type AppMenuItemProps = PropsWithChildren<{
+    onClick?: VoidFunction;
+    href?: string;
+    icon: ReactElement;
+}>
+
+export type AppMenuItemRef = HTMLAnchorElement & HTMLDivElement;
