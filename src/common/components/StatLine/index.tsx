@@ -1,13 +1,14 @@
 import CustomPaper from "@/common/components/CustomPaper";
-import { ServiceStatProps } from "@/services/types";
+import { StatProps } from "@/common/types";
 import { Stack, Typography, useTheme } from "@mui/material";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 /**
- * Компонент, представляющий график некоторого значения в сервисе
+ * Компонент, представляющий график некоторого значения в
+ * виде ломаных линий
  * @param props Properties
  * @returns Component
  */
-function ServiceStat<T>(props: ServiceStatProps<T>) {
+function StatLine<T>(props: StatProps<T>) {
 
     const theme = useTheme();
 
@@ -30,4 +31,4 @@ function ServiceStat<T>(props: ServiceStatProps<T>) {
     );
 }
 
-export default ServiceStat;
+export default StatLine;

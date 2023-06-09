@@ -2,7 +2,7 @@ import ServicePageComponent from '.';
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ServicePageComponent> = {
-    title: 'Service page',
+    title: 'Pages/ServicePage',
     component: ServicePageComponent,
     tags: ['autodocs']
 }

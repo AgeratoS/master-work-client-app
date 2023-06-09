@@ -1,7 +1,11 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-    return console.log("MIDDLEWARE RUNNING");
+    if (request.nextUrl.pathname === '/developer') {
+        return NextResponse.redirect(new URL('/developer/dashboard', request.url))
+    }
 }
 
-export const config = {}
+export const config = {
+    matcher: ['/developer/:path*']
+}

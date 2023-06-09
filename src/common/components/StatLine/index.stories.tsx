@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
-import ServiceStatComponent from ".";
+import StatLineComponent from ".";
 
-const meta: Meta<typeof ServiceStatComponent> = {
-    title: 'ServiceStat',
-    component: ServiceStatComponent,
+const meta: Meta<typeof StatLineComponent> = {
+    title: 'StatLine',
+    component: StatLineComponent,
     tags: ['autodocs']
 }
 
 export default meta;
 
-export const ServiceStat: StoryObj<typeof ServiceStatComponent<{
+export const ServiceStat: StoryObj<typeof StatLineComponent<{
     time: string;
     requests: number;
 }>> = {
