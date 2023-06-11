@@ -1,6 +1,6 @@
 import { useAuth } from "@/common/hooks";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 function AuthProcess() {
 
@@ -8,13 +8,19 @@ function AuthProcess() {
     const authObject = useAuth();
 
     useEffect(() => {
-        if (authObject.isAuth) {
+
+        if (window.localStorage.getItem('token') === undefined) {
+            if (authObject.isAuth) {
+                window.localStorage.setItem('token', authObject.token!);
+                router.replace('/developer');
+            }
+            else {
+                router.replace('/');
+            }
+        } else {
             router.replace('/developer');
         }
-        else {
-            router.replace('/auth');
-        }
-    }, []);
+    }, [authObject.token]);
 
     return <></>
 }

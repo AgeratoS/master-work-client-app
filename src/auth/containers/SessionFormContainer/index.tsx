@@ -2,17 +2,34 @@ import SessionForm from "@/auth/components/SessionForm";
 import { Mutation, Query } from "@/auth/graphql";
 import { SessionFormProps } from "@/auth/types";
 import { isAuthMode, isRegisterMode } from "@/auth/utils";
+import { authToken } from "@/common/vars";
 import { useLazyQuery, useMutation } from "@apollo/client";
 
 function SessionFormContainer() {
 
     const [register, { data, loading, error }] = useMutation(Mutation.createDeveloper);
-    const [login] = useLazyQuery(Query.verifyDeveloper);
 
-    const onAuth: SessionFormProps['onSubmit'] = (data) => {
-        login({
-            variables: data
+    const onAuth: SessionFormProps['onSubmit'] = async (data) => {
+        const authResponse = await fetch('http://localhost:3000/auth/login', {
+            body: JSON.stringify({
+                username: data.login,
+                password: data.password,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
         });
+        if (authResponse.body) {
+            const jsonResult = await authResponse.json();
+            if (jsonResult.accessToken) {
+                authToken(jsonResult.accessToken)
+            } else {
+                console.error("There is no such user")
+            }
+        } else {
+            console.error("There is no such user")
+        }
     }
 
     const onRegister: SessionFormProps['onSubmit'] = (data) => {
