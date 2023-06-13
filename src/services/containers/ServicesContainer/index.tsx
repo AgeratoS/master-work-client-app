@@ -1,12 +1,19 @@
 import Services from "@/services/components/Services";
-import { fakeServices } from "@/services/mocks";
-import { Service, ServicesProps } from "@/services/types";
-import { selectedServicesIds, tempServices } from "@/services/vars";
-import { useReactiveVar } from "@apollo/client";
+import { Mutation, Query } from "@/services/graphql";
+import { ServicesProps } from "@/services/types";
+import { selectedServicesIds } from "@/services/vars";
+import { useMutation, useQuery, useReactiveVar } from "@apollo/client";
 
 function ServicesContainer() {
 
-    const services: Service[] = useReactiveVar(tempServices);
+    const { data: services, refetch } = useQuery(Query.services, {
+        fetchPolicy: "cache-and-network",
+        nextFetchPolicy: "cache-first"
+    });
+
+    const [removeServices] = useMutation(Mutation.removeServices, {
+        onCompleted: refetch
+    });
 
     const _selectedServices = useReactiveVar(selectedServicesIds);
 
@@ -19,16 +26,22 @@ function ServicesContainer() {
         // 2. Вызвать мутацию удаления;
         // 3. Сбросить выделение
 
-        tempServices(services.filter((item) => !_selectedServices.includes(item.id)));
+        const servicesIds = _selectedServices.map((item) => parseInt((item as any) as string));
+
+        removeServices({
+            variables: {
+                servicesIds
+            }
+        });
         selectedServicesIds([]);
     }
 
     const onAdd: ServicesProps['onAdd'] = () => {
-        // Показать модалку добавления
+        refetch();
     }
 
     return (
-        <Services services={services} onChangeSelect={onChangeSelect} onRemove={onRemove} removeDisabled={_selectedServices.length === 0} />
+        <Services services={services?.serviceAll ?? []} onChangeSelect={onChangeSelect} onRemove={onRemove} removeDisabled={_selectedServices.length === 0} onAdd={onAdd} />
     );
 }
 

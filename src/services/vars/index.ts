@@ -12,4 +12,4 @@ export const selectedServicesIds = makeVar<number[]>([]);
  * Временная переменная, хранящая фэйковые сервисы.
  * NOTE: Потом удалить
  */
-export const tempServices = makeVar<Service[]>(fakeServices);
+export const tempServices = makeVar<Service[]>([]);

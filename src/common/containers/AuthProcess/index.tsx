@@ -1,6 +1,6 @@
 import { useAuth } from "@/common/hooks";
 import { useRouter } from "next/router";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 function AuthProcess() {
 

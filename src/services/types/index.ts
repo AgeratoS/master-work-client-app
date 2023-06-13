@@ -21,13 +21,14 @@ export type Service = {
     id: number;
     name: string;
     desc?: string;
-    url: string;
-    metric?: ServiceMetric;
-    logs?: ServiceLog[]
+    externalUrl: string;
+    appId?: string;
+    apiKey?: string;
+    serviceSolutionId?: number;
 }
 
-export type CreateServiceDto = Pick<Service, 'name' | 'url'>;
-export type UpdateServiceDto = Pick<Service, 'id' | 'name' | 'url'>;
+export type CreateServiceDto = Pick<Service, 'name' | 'externalUrl' | 'apiKey' | 'appId' | 'desc' | 'serviceSolutionId'>;
+export type UpdateServiceDto = Service;
 
 export type ServiceDto = CreateServiceDto | UpdateServiceDto;
 
@@ -39,6 +40,11 @@ export type RequestsCountStat = {
 export type RequestsPerHourStat = {
     time: string;
     requests: number;
+}
+
+export type ServiceSolution = {
+    id: number;
+    name: string;
 }
 
 
@@ -53,12 +59,19 @@ export type ServicesProps = {
 }
 
 export type ServiceFormBaseProps<T> = {
+    serviceSolutions: ServiceSolution[];
+    loading: boolean;
     onSubmit: (data: T) => void;
     initialData: T;
 }
 
 export type CreateServiceProps = ServiceFormBaseProps<CreateServiceDto>;
 export type UpdateServiceProps = ServiceFormBaseProps<UpdateServiceDto>;
+
+
+export type CreateServiceContainerProps = {
+    onAdd?: VoidFunction;
+}
 
 export type ServicePageProps = {
     service: Service;
